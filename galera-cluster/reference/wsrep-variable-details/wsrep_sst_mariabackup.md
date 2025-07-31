@@ -2,50 +2,52 @@
 
 #### `wsrep_sst_mariabackup` Variables
 
-The `wsrep_sst_mariabackup` script handles the actual data transfer and processing during an SST. The variables it reads from the `[sst]` group control aspects of the backup format, compression, transfer mechanism, and logging.
+The `wsrep_sst_mariabackup` script handles the actual data transfer and processing during an SST. The variables it reads from the `[sst]` group (and sometimes from other groups, too) control aspects of the backup format, compression, transfer mechanism, and logging.
 
 The `wsrep_sst_mariadbbackup` script parses the following options:
 
-* `sfmt` (streamfmt)
+* `streamfmt` (`[sst]`)
   * Default: `mbstream`
-  * Description: Defines the streaming format used by `mariabackup` for the SST. `mbstream` indicates that `mariabackup` will output a continuous stream of data. Other potential values (though not explicitly shown as defaults) might be related to different backup methods or tools.
+  * Description: Defines the streaming format used by `mariabackup` for the SST. `mbstream` indicates that `mariabackup` will output a continuous stream of data. `xbstream` is still supported as an alias for `mbstream` for backwards compatibility reasons. `tar` is the only other valid format, but is rarely used as it is less flexible than `mbstream`; missing support for some features.
 
 ***
 
-* `tfmt` (transferfmt)
+* `transferfmt` (`[sst]`)
   * Default: `socat`
-  * Description: Specifies the transfer format or utility used to move the data stream from the donor to the joiner node. `socat` is a common command-line tool for data transfer, often used for setting up various network connections.
+  * Description: Specifies the transfer format or utility used to move the data stream from the donor to the joiner node. `socat` is a common command-line tool for data transfer, often used for setting up various network connections, but its predecessor `netcat` can also still be used by setting this parameter to `nc` instead of `socat`.
 
 ***
 
-* `sockopt` (socket options)
-  * Description: Allows additional socket options to be passed to the underlying network communication. This could include settings for TCP buffers, keep-alives, or other network-related tunables to optimize the transfer performance.
+* `sockopt` (`[sst]`)
+  * Description: Allows additional socket options to be passed to the underlying network communication. This could include settings for TCP buffers, keep-alives, or other network-related tunables to optimize the transfer performance. Possible values are basically all valid command line options of the `socat` or `netcat` tool, whichever was chosen by the `transferfmt` setting
 
 ***
 
-* `progress`
-  * Description: Likely controls whether progress information about the SST is displayed or logged. Setting this could enable visual indicators or detailed log entries about the transfer's advancement.
-
-***
-
-* `ttime` (time)
+* `progress` (`[sst]`)
   * Default: `0`
-  * Description: Possibly a timeout value in seconds for certain operations during the SST, or a flag related to timing the transfer. A value of `0` might indicate no timeout or that timing is handled elsewhere.
+  * Description: When having this set to `1`, and the `pv` tool installed, extra progress information will be written to the error log showing how transfer of the data progresses.
+  
+***
+
+* `time` (`[sst]`) 
+ * Default: `0`
+ * Description: When set to `1` extra timeing info will be printed for each backup stage in the form `NOTE: _stage_name_ took ### seconds`f
+ 
+***
+
+* `cpat` (`[sst]`)
+  * Default: `'.*\.pem$\|.*galera\.cache$\|.*sst_in_progress$\|.*\.sst$\|.*gvwstate\.dat$\|.*grastate\.dat$\|.*\.err$\|.*\.log$\|.*RPM_UPGRADE_MARKER$\|.*RPM_UPGRADE_HISTORY$'`
+  * Description: Before starting the actual data transfer several non-database files will be removed from the joiners datadir. The `cpat` pattern is a regular expression acting as a positive list of file name patters to be kept, not deleted.
 
 ***
 
-* `cpat`
-  * Description: Appears to be related to a "copy pattern" or specific path handling during the SST. Its exact function would depend on how the `wsrep_sst_mariabackup` script uses this pattern for file or directory management.
+* `compressor` (`[sst]`)
+  * Description: Specifies the compression utility to be used on the data stream before transfer. Common values could include `gzip`, `pigz`, `lz4`, or 'bzip2'  which reduce the data size for faster transmission over the network. Output will be piped through the given command, additiona command line options can be given as needed, e.g. `pigz --fast` or `pigz --best` to control compression rate.
 
 ***
 
-* `scomp` (compressor)
-  * Description: Specifies the compression utility to be used on the data stream before transfer. Common values could include `gzip`, `pigz`, `lz4`, or `qpress`, which reduce the data size for faster transmission over the network.
-
-***
-
-* `sdecomp` (decompressor)
-  * Description: Specifies the decompression utility to be used on the receiving end (joiner node) to decompress the data stream that was compressed by `scomp`. It should correspond to the `scomp` setting.
+* `decompressor` (`[sst]`)
+  * Description: Specifies the decompression utility to be used on the receiving end (joiner node) to decompress the data stream that was compressed by `compress`. It should correspond to the `compress` setting, e.g. when using `compresor=pigz` then `decompressor=unpigz` should be used for decompression to work.
 
 ***
 
