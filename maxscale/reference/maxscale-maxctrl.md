@@ -42,21 +42,20 @@ removed.
 Another file from which to read the defaults can be specified with the 
 `--config=my-file` / `-c my-file` option.
 
-## Commands
+## Common command line options
 
-### list
-
-#### list servers
+The following common command line options are always available:
 
 ```
-Usage: list servers
-
 Global Options:
   -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
   -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
+  -p, --password   Password for the user. To input the password manually, 
+                   use -p '' or --password=''  [string] [default: "mariadb"]
+  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format 
+                   and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
+  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', 
+                   or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
   -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
       --tsv        Print tab separated output  [boolean] [default: false]
       --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
@@ -69,9 +68,19 @@ HTTPS/TLS Options:
       --tls-ca-cert             Path to TLS CA certificate  [string]
   -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
 
-Options:
+General Options:
       --version  Show version number  [boolean]
       --help     Show help  [boolean]
+```
+
+## Commands
+
+### list
+
+#### list servers
+
+```
+Usage: list servers
 
 List all servers in MaxScale.
 
@@ -92,28 +101,6 @@ List all servers in MaxScale.
 ```
 Usage: list services
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 List all services and the servers they use.
 
 
@@ -130,28 +117,6 @@ List all services and the servers they use.
 
 ```
 Usage: list listeners [service]
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 List listeners of all services. If a service is given, only listeners for that service are listed.
 
@@ -170,28 +135,6 @@ List listeners of all services. If a service is given, only listeners for that s
 ```
 Usage: list monitors
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 List all monitors in MaxScale.
 
 
@@ -207,28 +150,8 @@ List all monitors in MaxScale.
 ```
 Usage: list sessions
 
-Options:
+Command specific ptions:
       --rdns     Perform a reverse DNS lookup on client IPs  [boolean] [default: false]
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
 
 List all client sessions.
 
@@ -249,27 +172,6 @@ List all client sessions.
 ```
 Usage: list filters
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 List all filters in MaxScale.
 
@@ -286,28 +188,6 @@ List all filters in MaxScale.
 ```
 Usage: list modules
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 List all currently loaded modules.
 
 
@@ -322,28 +202,6 @@ List all currently loaded modules.
 
 ```
 Usage: list threads
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 List all worker threads.
 
@@ -363,27 +221,6 @@ List all worker threads.
 ```
 Usage: list users
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 List network the users that can be used to connect to the MaxScale REST API.
 
@@ -403,28 +240,6 @@ List network the users that can be used to connect to the MaxScale REST API.
 ```
 Usage: list commands
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 List all available module commands.
 
 
@@ -442,27 +257,6 @@ Usage: list queries
 List queries options:
   -l, --max-length  Maximum SQL length to display. Use --max-length=0 for no limit.  [number] [default: 120]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 List all active queries being executed through MaxScale. In order for this command to work, MaxScale must be configured with 'retain_last_statements' set to a value greater than 0.
 ```
@@ -474,27 +268,6 @@ List all active queries being executed through MaxScale. In order for this comma
 ```
 Usage: show server <server>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Show detailed information about a server. The `Parameters` field contains the currently configured parameters for this server. See `--help alter server` for more details about altering server parameters.
 
@@ -527,28 +300,6 @@ Show detailed information about a server. The `Parameters` field contains the cu
 ```
 Usage: show servers
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 Show detailed information about all servers.
 
 
@@ -580,28 +331,6 @@ Show detailed information about all servers.
 ```
 Usage: show service <service>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 Show detailed information about a service. The `Parameters` field contains the currently configured parameters for this service. See `--help alter service` for more details about altering service parameters.
 
 
@@ -628,28 +357,6 @@ Show detailed information about a service. The `Parameters` field contains the c
 
 ```
 Usage: show services
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Show detailed information about all services.
 
@@ -678,28 +385,6 @@ Show detailed information about all services.
 ```
 Usage: show monitor <monitor>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 Show detailed information about a monitor. The `Parameters` field contains the currently configured parameters for this monitor. See `--help alter monitor` for more details about altering monitor parameters.
 
 
@@ -719,27 +404,6 @@ Show detailed information about a monitor. The `Parameters` field contains the c
 ```
 Usage: show monitors
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Show detailed information about all monitors.
 
@@ -760,28 +424,8 @@ Show detailed information about all monitors.
 ```
 Usage: show session <session>
 
-Options:
+Additional Options:
       --rdns     Perform a reverse DNS lookup on client IPs  [boolean] [default: false]
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
 
 Show detailed information about a single session. The list of sessions can be retrieved with the `list sessions` command. The <session> is the session ID of a particular session.
 
@@ -813,28 +457,8 @@ The `Connections` field lists the servers to which the session is connected and 
 ```
 Usage: show sessions
 
-Options:
+Additional Options:
       --rdns     Perform a reverse DNS lookup on client IPs  [boolean] [default: false]
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
 
 Show detailed information about all sessions. See `--help show session` for more details.
 
@@ -864,27 +488,6 @@ Show detailed information about all sessions. See `--help show session` for more
 ```
 Usage: show filter <filter>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The list of services that use this filter is show in the `Services` field.
 
@@ -904,28 +507,6 @@ The list of services that use this filter is show in the `Services` field.
 ```
 Usage: show filters
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 Show detailed information of all filters.
 
 
@@ -944,65 +525,22 @@ Show detailed information of all filters.
 ```
 Usage: show listener <listener>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 
 
 
-                                                           Field      | Description
-                                                           -----      | -----------
-                                                           Name       | Listener name
-                                                           Source     | File where the object is stored in
-                                                           Service    | Services that the listener points to
-                                                           Parameters | Listener parameters
+  Field      | Description
+  -----      | -----------
+  Name       | Listener name
+  Source     | File where the object is stored in
+  Service    | Services that the listener points to
+  Parameters | Listener parameters
 ```
 
 #### show listeners
 
 ```
 Usage: show filters
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Show detailed information of all filters.
 
@@ -1021,28 +559,6 @@ Show detailed information of all filters.
 
 ```
 Usage: show module <module>
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This command shows all available parameters as well as detailed version information of a loaded module.
 
@@ -1063,27 +579,6 @@ This command shows all available parameters as well as detailed version informat
 ```
 Usage: show modules
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Displays detailed information about all modules.
 
@@ -1104,27 +599,6 @@ Displays detailed information about all modules.
 ```
 Usage: show maxscale
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 See `--help alter maxscale` for more details about altering MaxScale parameters.
 
@@ -1145,28 +619,6 @@ See `--help alter maxscale` for more details about altering MaxScale parameters.
 
 ```
 Usage: show thread <thread>
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Show detailed information about a worker thread.
 
@@ -1204,28 +656,9 @@ Show detailed information about a worker thread.
 ```
 Usage: show threads
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
+Additional options
 
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-      --kind     The kind of threads to display, only the running or all.  [string] [choices: "running", "all"] [default: "running"]
+  --kind     The kind of threads to display, only the running or all.  [string] [choices: "running", "all"] [default: "running"]
 
 Show detailed information about all worker threads.
 
@@ -1263,28 +696,6 @@ Show detailed information about all worker threads.
 ```
 Usage: show logging
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 See `--help alter logging` for more details about altering logging parameters.
 
 
@@ -1300,27 +711,6 @@ See `--help alter logging` for more details about altering logging parameters.
 ```
 Usage: show commands <module>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This command shows the parameters the command expects with the parameter descriptions.
 
@@ -1337,28 +727,6 @@ This command shows the parameters the command expects with the parameter descrip
 ```
 Usage: show qc_cache
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 Show contents (statement and hits) of query classifier cache.
 ```
 
@@ -1366,28 +734,6 @@ Show contents (statement and hits) of query classifier cache.
 
 ```
 Usage: show dbusers <service>
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Show information about the database users of the service.
 
@@ -1411,30 +757,9 @@ Show information about the database users of the service.
 ```
 Usage: set server <server> <state>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
 
 Set options:
       --force  If combined with the `maintenance` state, this forcefully closes all connections to the target server  [boolean] [default: false]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 If <server> is monitored by a monitor, this command should only be used to set the server into the `maintenance` or the `drain` state. Any other states will be overridden by the monitor on the next monitoring interval. To manually control server states, use the `stop monitor <name>` command to stop the monitor before setting the server states manually.
 
@@ -1450,28 +775,6 @@ To forcefully close all connections to a server, use `set server <name> maintena
 ```
 Usage: clear server <server> <state>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 This command clears a server state set by the `set server <server> <state>` command
 ```
 
@@ -1482,27 +785,6 @@ This command clears a server state set by the `set server <server> <state>` comm
 ```
 Usage: enable log-priority <log>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The `debug` log priority is only available for debug builds of MaxScale.
 ```
@@ -1513,28 +795,6 @@ The `debug` log priority is only available for debug builds of MaxScale.
 
 ```
 Usage: disable log-priority <log>
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The `debug` log priority is only available for debug builds of MaxScale.
 ```
@@ -1550,27 +810,6 @@ Create server options:
       --services  Link the created server to these services  [array]
       --monitors  Link the created server to these monitors  [array]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The created server will not be used by any services or monitors unless the --services or --monitors options are given. The list of servers a service or a monitor uses can be altered with the `link` and `unlink` commands. If the <host|socket> argument is an absolute path, the server will use a local UNIX domain socket connection. In this case the [port] argument is ignored.
 
@@ -1584,28 +823,6 @@ Usage: create monitor <name> <module> [params...]
 
 Create monitor options:
       --servers  Link the created monitor to these servers. All non-option arguments after --servers are interpreted as server names e.g. `--servers srv1 srv2 srv3`.  [array]
-
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The list of servers given with the --servers option should not contain any servers that are already monitored by another monitor. The last argument to this command is a list of key=value parameters given as the monitor parameters. The redundant option parameters have been deprecated in MaxScale 22.08.
 ```
@@ -1621,28 +838,6 @@ Create service options:
       --services  Link the created service to these services. All non-option arguments after --services are interpreted as service names e.g. `--services svc1 svc2 svc3`.  [array]
       --cluster   Link the created service to this cluster (i.e. a monitor)  [string]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 The last argument to this command is a list of key=value parameters given as the service parameters. If the --servers, --services or --filters options are used, they must be defined after the service parameters. The --cluster option is mutually exclusive with the --servers and --services options.
 
 Note that the `user` and `password` parameters must be defined.
@@ -1653,28 +848,6 @@ Note that the `user` and `password` parameters must be defined.
 ```
 Usage: filter <name> <module> [params...]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 The last argument to this command is a list of key=value parameters given as the filter parameters.
 ```
 
@@ -1683,27 +856,6 @@ The last argument to this command is a list of key=value parameters given as the
 ```
 Usage: create listener <service> <name> <port> [params...]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The new listener will be taken into use immediately. The last argument to this command is a list of key=value parameters given as the listener parameters. These parameters override any parameters set via command line options: e.g. using `protocol=mariadb` will override the `--protocol=cdc` option. The redundant option parameters have been deprecated in MaxScale 22.08.
 ```
@@ -1716,28 +868,6 @@ Usage: create user <name> <password>
 Create user options:
       --type  Type of user to create  [string] [choices: "admin", "basic"] [default: "basic"]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 By default the created user will have read-only privileges. To make the user an administrative user, use the `--type=admin` option. Basic users can only perform `list` and `show` commands.
 ```
 
@@ -1746,27 +876,6 @@ By default the created user will have read-only privileges. To make the user an 
 ```
 Usage: create report <file>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The generated report contains the state of all the objects in MaxScale as well as all other required information needed to diagnose problems.
 ```
@@ -1781,28 +890,6 @@ Usage: destroy server <name>
 Destroy options:
       --force  Remove the server from monitors and services before destroying it  [boolean] [default: false]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 The server must be unlinked from all services and monitor before it can be destroyed.
 ```
 
@@ -1814,27 +901,6 @@ Usage: destroy monitor <name>
 Destroy options:
       --force  Remove monitored servers from the monitor before destroying it  [boolean] [default: false]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The monitor must be unlinked from all servers before it can be destroyed.
 ```
@@ -1844,27 +910,6 @@ The monitor must be unlinked from all servers before it can be destroyed.
 ```
 Usage: destroy listener { <listener> | <service> <listener> }
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Destroying a listener closes the listening socket, opening it up for immediate reuse. If only one argument is given and it is the name of a listener, it is unconditionally destroyed. If two arguments are given and they are a service and a listener, the listener is only destroyed if it is for the given service.
 ```
@@ -1877,27 +922,6 @@ Usage: destroy service <name>
 Destroy options:
       --force  Remove filters, listeners and servers from service before destroying it  [boolean] [default: false]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The service must be unlinked from all servers and filters. All listeners for the service must be destroyed before the service itself can be destroyed.
 ```
@@ -1910,27 +934,6 @@ Usage: destroy filter <name>
 Destroy options:
       --force  Automatically remove the filter from all services before destroying it  [boolean] [default: false]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The filter must not be used by any service when it is destroyed.
 ```
@@ -1940,27 +943,6 @@ The filter must not be used by any service when it is destroyed.
 ```
 Usage: destroy user <name>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The last remaining administrative user cannot be removed. Create a replacement administrative user before attempting to remove the last administrative user.
 ```
@@ -1973,27 +955,6 @@ Usage: destroy session <id>
 Destroy options:
       --ttl  Give session this many seconds to gracefully close  [number] [default: 0]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This causes the client session with the given ID to be closed. If the --ttl option is used, the session is given that many seconds to gracefully stop. If no TTL value is given, the session is closed immediately.
 ```
@@ -2005,27 +966,6 @@ This causes the client session with the given ID to be closed. If the --ttl opti
 ```
 Usage: link service <name> <target...>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This command links targets to a service, making them available for any connections that use the service. A target can be a server, another service or a cluster (i.e. a monitor). Before a server is linked to a service, it should be linked to a monitor so that the server state is up to date. Newly linked targets are only available to new connections, existing connections will use the old list of targets. If a monitor (a cluster of servers) is linked to a service, the service must not have any other targets linked to it.
 ```
@@ -2035,27 +975,6 @@ This command links targets to a service, making them available for any connectio
 ```
 Usage: link monitor <name> <server...>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Linking a server to a monitor will add it to the list of servers that are monitored by that monitor. A server can be monitored by only one monitor at a time.
 ```
@@ -2067,27 +986,6 @@ Linking a server to a monitor will add it to the list of servers that are monito
 ```
 Usage: unlink service <name> <target...>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This command unlinks targets from a service, removing them from the list of available targets for that service. New connections to the service will not use the unlinked targets but existing connections can still use the targets. A target can be a server, another service or a cluster (a monitor).
 ```
@@ -2097,27 +995,6 @@ This command unlinks targets from a service, removing them from the list of avai
 ```
 Usage: unlink monitor <name> <server...>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This command unlinks servers from a monitor, removing them from the list of monitored servers. The servers will be left in their current state when they are unlinked from a monitor.
 ```
@@ -2129,27 +1006,6 @@ This command unlinks servers from a monitor, removing them from the list of moni
 ```
 Usage: start service <name>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This starts a service stopped by `stop service <name>`
 ```
@@ -2159,27 +1015,6 @@ This starts a service stopped by `stop service <name>`
 ```
 Usage: start listener <name>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This starts a listener stopped by `stop listener <name>`
 ```
@@ -2189,27 +1024,6 @@ This starts a listener stopped by `stop listener <name>`
 ```
 Usage: start monitor <name>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This starts a monitor stopped by `stop monitor <name>`
 ```
@@ -2219,27 +1033,6 @@ This starts a monitor stopped by `stop monitor <name>`
 ```
 Usage: start [services|maxscale]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This command will execute the `start service` command for all services in MaxScale.
 ```
@@ -2254,27 +1047,6 @@ Usage: stop service <name>
 Stop options:
       --force  Close existing connections after stopping the service  [boolean] [default: false]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Stopping a service will prevent all the listeners for that service from accepting new connections. Existing connections will still be handled normally until they are closed.
 ```
@@ -2287,27 +1059,6 @@ Usage: stop listener <name>
 Stop options:
       --force  Close existing connections after stopping the listener  [boolean] [default: false]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Stopping a listener will prevent it from accepting new connections. Existing connections will still be handled normally until they are closed.
 ```
@@ -2317,27 +1068,6 @@ Stopping a listener will prevent it from accepting new connections. Existing con
 ```
 Usage: stop monitor <name>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Stopping a monitor will pause the monitoring of the servers. This can be used to manually control server states with the `set server` command.
 ```
@@ -2350,27 +1080,6 @@ Usage: stop [services|maxscale]
 Stop options:
       --force  Close existing connections after stopping all services  [boolean] [default: false]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This command will execute the `stop service` command for all services in MaxScale.
 ```
@@ -2382,27 +1091,6 @@ This command will execute the `stop service` command for all services in MaxScal
 ```
 Usage: alter server <server> <key=value> ...
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 To display the server parameters, execute `show server <server>`.
 The parameters should be given in the `key=value` format. This command also supports the legacy method
@@ -2414,27 +1102,6 @@ of passing parameters as `key value` pairs but the use of this is not recommende
 ```
 Usage: alter monitor <monitor> <key=value> ...
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 To display the monitor parameters, execute `show monitor <monitor>`
 The parameters should be given in the `key=value` format. This command also supports the legacy method
@@ -2446,27 +1113,6 @@ of passing parameters as `key value` pairs but the use of this is not recommende
 ```
 Usage: alter service <service> <key=value> ...
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 To display the service parameters, execute `show service <service
 The parameters should be given in the `key=value` format. This command also supports the legacy method
@@ -2478,27 +1124,6 @@ of passing parameters as `key value` pairs but the use of this is not recommende
 ```
 Usage: alter service-filters <service> [filters...]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The order of the filters given as the second parameter will also be the order in which queries pass through the filter chain. If no filters are given, all existing filters are removed from the service.
 
@@ -2513,27 +1138,6 @@ of passing parameters as `key value` pairs but the use of this is not recommende
 ```
 Usage: alter filter <filter> <key=value> ...
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 To display the filter parameters, execute `show filter <filter>`. Some filters support runtime configuration changes to all parameters. Refer to the filter documentation for details on whether it supports runtime configuration changes and which parameters can be altered.
 
@@ -2549,27 +1153,6 @@ Note: To pass options with dashes in them, surround them in both single and doub
 ```
 Usage: alter listener <listener> <key=value> ...
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 To display the listener parameters, execute `show listener <listener>`
 The parameters should be given in the `key=value` format. This command also supports the legacy method
@@ -2581,28 +1164,6 @@ of passing parameters as `key value` pairs but the use of this is not recommende
 ```
 Usage: alter logging <key=value> ...
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
-
 To display the logging parameters, execute `show logging`
 The parameters should be given in the `key=value` format. This command also supports the legacy method
 of passing parameters as `key value` pairs but the use of this is not recommended.
@@ -2613,27 +1174,6 @@ of passing parameters as `key value` pairs but the use of this is not recommende
 ```
 Usage: alter maxscale <key=value> ...
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 To display the MaxScale parameters, execute `show maxscale`.
 The parameters should be given in the `key=value` format. This command also supports the legacy method
@@ -2645,27 +1185,6 @@ of passing parameters as `key value` pairs but the use of this is not recommende
 ```
 Usage: alter user <name> <password>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Changes the password for a user. To change the user type, destroy the user and then create it again.
 ```
@@ -2675,27 +1194,6 @@ Changes the password for a user. To change the user type, destroy the user and t
 ```
 Usage: alter session <session> <key=value> ...
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Alter parameters of a session. To get the list of modifiable parameters, use `show session <session>`
 The parameters should be given in the `key=value` format. This command also supports the legacy method
@@ -2707,27 +1205,6 @@ of passing parameters as `key value` pairs but the use of this is not recommende
 ```
 Usage: alter session-filters <session> [filters...]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 The order of the filters given as the second parameter will also be the order in which queries pass through the filter chain. If no filters are given, all existing filters are removed from the session. The syntax is similar to `alter service-filters`.
 ```
@@ -2739,27 +1216,6 @@ The order of the filters given as the second parameter will also be the order in
 ```
 Usage: rotate logs
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This command is intended to be used with the `logrotate` command.
 ```
@@ -2771,27 +1227,6 @@ This command is intended to be used with the `logrotate` command.
 ```
 Usage: reload service <service>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 ```
 
 #### reload tls
@@ -2799,27 +1234,6 @@ Options:
 ```
 Usage: reload tls <service>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This command reloads the TLS certificates for all listeners and servers as well as the REST API in MaxScale. The REST API JWT signature keys are also rotated by this command.
 ```
@@ -2829,27 +1243,6 @@ This command reloads the TLS certificates for all listeners and servers as well 
 ```
 Usage: reload session <id>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This command reloads the configuration of a session. When a session is reloaded, it internally restarts the MaxScale session. This means that new connections are created and taken into use before the old connections are discarded. The session will use the latest configuration of the service the listener it used pointed to. This means that the behavior of the session can change as a result of a reload if the configuration has changed. If the reloading fails, the old configuration will remain in use. The external session ID of the connection will remain the same as well as any statistics or session level alterations that were done before the reload.
 ```
@@ -2859,27 +1252,6 @@ This command reloads the configuration of a session. When a session is reloaded,
 ```
 Usage: reload sessions
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 This command reloads the configuration of all sessions. When a session is reloaded, it internally restarts the MaxScale session. This means that new connections are created and taken into use before the old connections are discarded. The session will use the latest configuration of the service the listener it used pointed to. This means that the behavior of the session can change as a result of a reload if the configuration has changed. If the reloading fails, the old configuration will remain in use. The external session ID of the connection will remain the same as well as any statistics or session level alterations that were done before the reload.
 ```
@@ -2891,27 +1263,6 @@ This command reloads the configuration of all sessions. When a session is reload
 ```
 Usage: call command <module> <command> [params...]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 To inspect the list of module commands, execute `list commands`
 ```
@@ -2923,31 +1274,9 @@ To inspect the list of module commands, execute `list commands`
 ```
 Usage: get <resource> [path]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
 API options:
       --sum     Calculate sum of API result. Only works for arrays of numbers e.g. `api get --sum servers data[].attributes.statistics.connections`.  [boolean] [default: false]
       --pretty  Pretty-print output.  [boolean] [default: false]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Perform a raw REST API call. The path definition uses JavaScript syntax to extract values. For example, the following command extracts all server states as an array of JSON values: maxctrl api get servers data[].attributes.state
 ```
@@ -2957,31 +1286,9 @@ Perform a raw REST API call. The path definition uses JavaScript syntax to extra
 ```
 Usage: post <resource> <value>
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
 API options:
       --sum     Calculate sum of API result. Only works for arrays of numbers e.g. `api get --sum servers data[].attributes.statistics.connections`.  [boolean] [default: false]
       --pretty  Pretty-print output.  [boolean] [default: false]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Perform a raw REST API call. The provided value is passed as-is to the REST API after building it with JSON.parse
 ```
@@ -2991,31 +1298,9 @@ Perform a raw REST API call. The provided value is passed as-is to the REST API 
 ```
 Usage: patch <resource> [path]
 
-Global Options:
-  -c, --config     MaxCtrl configuration file  [string] [default: "~/.maxctrl.cnf"]
-  -u, --user       Username to use  [string] [default: "admin"]
-  -p, --password   Password for the user. To input the password manually, use -p '' or --password=''  [string] [default: "mariadb"]
-  -h, --hosts      List of MaxScale hosts. The hosts must be in HOST:PORT format and each value must be separated by a comma.  [string] [default: "127.0.0.1:8989"]
-  -t, --timeout    Request timeout in plain milliseconds, e.g '-t 1000', or as duration with suffix [h|m|s|ms], e.g. '-t 10s'  [string] [default: "10000"]
-  -q, --quiet      Silence all output. Ignored while in interactive mode.  [boolean] [default: false]
-      --tsv        Print tab separated output  [boolean] [default: false]
-      --skip-sync  Disable configuration synchronization for this command  [boolean] [default: false]
-
-HTTPS/TLS Options:
-  -s, --secure                  Enable HTTPS requests  [boolean] [default: false]
-      --tls-key                 Path to TLS private key  [string]
-      --tls-passphrase          Password for the TLS private key  [string]
-      --tls-cert                Path to TLS public certificate  [string]
-      --tls-ca-cert             Path to TLS CA certificate  [string]
-  -n, --tls-verify-server-cert  Whether to verify server TLS certificates  [boolean] [default: true]
-
 API options:
       --sum     Calculate sum of API result. Only works for arrays of numbers e.g. `api get --sum servers data[].attributes.statistics.connections`.  [boolean] [default: false]
       --pretty  Pretty-print output.  [boolean] [default: false]
-
-Options:
-      --version  Show version number  [boolean]
-      --help     Show help  [boolean]
 
 Perform a raw REST API call. The provided value is passed as-is to the REST API after building it with JSON.parse
 ```
