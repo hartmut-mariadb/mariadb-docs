@@ -1504,9 +1504,6 @@ Perform a raw REST API call. The provided value is passed as-is to the REST API 
 
 Classify SQL statement using MaxScale and display the result.
 
-The possible values for "Parse result", "Type mask" and "Operation" can be looked up in https://github.com/mariadb-corporation/MaxScale/blob/2.3/include/maxscale/query_classifier.h
-<!-- TODO have those values described inline in here instead -->
-
 Usage:
 
 ```
@@ -1516,13 +1513,82 @@ Output fields:
 
 | Field | Description |
 | ----- | ----------- |
-| Parse result | See note above |
-| Type mask | See note above |
-| Operation | See note above |
+| Parse result | See list below |
+| Type mask | See list below |
+| Operation | See list below |
 | Has where clause | Not functional yet? |
 | Fields | Table columns used in the statement |
 | Functions | Functions and operators used in the statement |
 | Canonocal | Canonical form of the statement with all constant values being replaced with `?` placeholders |
+
+Parse result values:
+
+| Parser result | Description |
+| ------------- | ----------- |
+| Parser::Result::INVALID          | The query was not recognized or could not be parsed. |
+| Parser::Result::TOKENIZED        | The query was classified based on tokens; incompletely classified. |
+| Parser::Result::PARTIALLY_PARSED | The query was only partially parsed; incompletely classified. |
+| Parser::Result::PARSED           | The query was fully parsed; completely classified. |
+ 
+Type mask values:
+
+| Type mask                    |  Description |
+| ---------------------------- | ------------ |
+| sql::TYPE_READ               |  Read database data:any |
+| sql::TYPE_WRITE              |  Master data will be  modified:master |
+| sql::TYPE_MASTER_READ        |  Read from the master:master |
+| sql::TYPE_SESSION_WRITE      |  Session data will be modified:master or all |
+| sql::TYPE_USERVAR_WRITE      |  Write a user variable:master or all |
+| sql::TYPE_USERVAR_READ       |  Read a user variable:master or any |
+| sql::TYPE_SYSVAR_READ        |  Read a system variable:master or any |
+| sql::TYPE_GSYSVAR_READ       |  Read global system variable:master or any |
+| sql::TYPE_GSYSVAR_WRITE      |  Write global system variable:master or all |
+| sql::TYPE_BEGIN_TRX          |  BEGIN or START TRANSACTION |
+| sql::TYPE_ENABLE_AUTOCOMMIT  |  SET autocommit=1 |
+| sql::TYPE_DISABLE_AUTOCOMMIT |  SET autocommit=0 |
+| sql::TYPE_ROLLBACK           |  ROLLBACK |
+| sql::TYPE_COMMIT             |  COMMIT |
+| sql::TYPE_PREPARE_NAMED_STMT |  Prepared stmt with name from user:all |
+| sql::TYPE_PREPARE_STMT       |  Prepared stmt with id provided by server:all |
+| sql::TYPE_EXEC_STMT          |  Execute prepared statement:master or any |
+| sql::TYPE_CREATE_TMP_TABLE   |  Create temporary table:master (could be all) |
+| sql::TYPE_DEALLOC_PREPARE    |  Dealloc named prepare stmt:all |
+| sql::TYPE_READONLY           |  The READ ONLY part of SET TRANSACTION |
+| sql::TYPE_READWRITE          |  The READ WRITE part of SET TRANSACTION  |
+| sql::TYPE_NEXT_TRX           |  SET TRANSACTION that's only for the next transaction |
+
+
+Operation values:
+
+| Operation |
+| --------- |
+| sql::OP_UNDEFINED |
+| sql::OP_ALTER |
+| sql::OP_ALTER_TABLE |
+| sql::OP_CALL |
+| sql::OP_CHANGE_DB |
+| sql::OP_CREATE |
+| sql::OP_CREATE_ROLE |
+| sql::OP_CREATE_TABLE |
+| sql::OP_CREATE_USER |
+| sql::OP_DELETE |
+| sql::OP_DROP |
+| sql::OP_DROP_TABLE |
+| sql::OP_EXECUTE |
+| sql::OP_EXPLAIN |
+| sql::OP_GRANT |
+| sql::OP_INSERT |
+| sql::OP_KILL |
+| sql::OP_LOAD |
+| sql::OP_LOAD_LOCAL |
+| sql::OP_REVOKE |
+| sql::OP_SELECT |
+| sql::OP_SET |
+| sql::OP_SET_TRANSACTION |
+| sql::OP_SHOW |
+| sql::OP_SHOW_DATABASES |
+| sql::OP_TRUNCATE |
+| sql::OP_UPDATE |
 
 Example output:
 
