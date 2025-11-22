@@ -1502,6 +1502,53 @@ Perform a raw REST API call. The provided value is passed as-is to the REST API 
 
 ### classify
 
+Classify SQL statement using MaxScale and display the result.
+
+The possible values for "Parse result", "Type mask" and "Operation" can be looked up in https://github.com/mariadb-corporation/MaxScale/blob/2.3/include/maxscale/query_classifier.h
+<!-- TODO have those values described inline in here instead -->
+
+Usage:
+
+```
+maxctrl [options] classify "...statement..."
+```
+Output fields:
+
+| Field | Description |
+| ----- | ----------- |
+| Parse result | See note above |
+| Type mask | See note above |
+| Operation | See note above |
+| Has where clause | Not functional yet? |
+| Fields | Table columns used in the statement |
+| Functions | Functions and operators used in the statement |
+| Canonocal | Canonical form of the statement with all constant values being replaced with `?` placeholders |
+
+Example output:
+
+```
+$  maxctrl classify "select user, host as foo from mysql.user where 2 = 1 + 1"
+┌──────────────────┬──────────────────────────────────────────────────────────┐
+│ Parse result     │ Parser::Result::PARSED                                   │
+├──────────────────┼──────────────────────────────────────────────────────────┤
+│ Type mask        │ sql::TYPE_READ                                           │
+├──────────────────┼──────────────────────────────────────────────────────────┤
+│ Operation        │ sql::OP_SELECT                                           │
+├──────────────────┼──────────────────────────────────────────────────────────┤
+│ Has where clause │                                                          │
+├──────────────────┼──────────────────────────────────────────────────────────┤
+│ Fields           │ user                                                     │
+│                  │ host                                                     │
+├──────────────────┼──────────────────────────────────────────────────────────┤
+│ Functions        │ =: ()                                                    │
+│                  │ +: ()                                                    │
+├──────────────────┼──────────────────────────────────────────────────────────┤
+│ Canonical        │ select user, host as foo from mysql.user where ? = ? + ? │
+└──────────────────┴──────────────────────────────────────────────────────────┘
+```
+
+
+
 <sub>_This page is licensed: CC BY-SA / Gnu FDL_</sub>
 
 {% @marketo/form formId="4316" %}
