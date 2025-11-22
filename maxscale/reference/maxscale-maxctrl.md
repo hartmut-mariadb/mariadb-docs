@@ -31,16 +31,16 @@ content:
 
 ```
 [maxctrl]
-u = my-name
-p = my-password
+user = my-name
+password = my-password
 ```
 
 Note that all access rights to the file must be removed from everybody else
 but the owner. MaxCtrl refuses to use the file unless the rights have been
 removed.
 
-Another file from which to read the defaults can be specified with the `-c`
-flag.
+Another file from which to read the defaults can be specified with the 
+`--config=my-file` / `-c my-file` option.
 
 ## Commands
 
