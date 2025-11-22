@@ -79,186 +79,381 @@ General Options:
 
 #### list servers
 
-```
-Usage: list servers
-
 List all servers in MaxScale.
 
+Usage:
 
-  Field       | Description
-  -----       | -----------
-  Server      | Server name
-  Address     | Address where the server listens
-  Port        | The port on which the server listens
-  Connections | Current connection count
-  State       | Server state
-  GTID        | Current value of @@gtid_current_pos
-  Monitor     | The monitor for this server
+```
+maxctrl [options] list servers
+```
+
+Result fields:
+
+|  Field       | Description                             |
+|  -----       | --------------------------------------- |
+|  Server      | Server name                             |
+|  Address     | Address where the server listens        |
+|  Port        | The port on which the server listens    |
+|  Connections | Current connection count                |
+|  State       | Server state                            |
+|  GTID        | Current value of @@gtid_current_pos     |
+|  Monitor     | The monitor for this server             |
+
+Example output:
+
+```
+$  maxctrl list servers
+┌───────────┬─────────┬──────┬─────────────┬──────────────────────┬─────────────┬─────────┐
+│ Server    │ Address │ Port │ Connections │ State                │ GTID        │ Monitor │
+├───────────┼─────────┼──────┼─────────────┼──────────────────────┼─────────────┼─────────┤
+│ master    │ master  │ 3306 │ 0           │ Maintenance, Running │ 23-11-39    │ Monitor │
+├───────────┼─────────┼──────┼─────────────┼──────────────────────┼─────────────┼─────────┤
+│ replica-1 │ slave-1 │ 3306 │ 0           │ Master, Running      │ 23-12-14957 │ Monitor │
+├───────────┼─────────┼──────┼─────────────┼──────────────────────┼─────────────┼─────────┤
+│ replica-2 │ slave-2 │ 3306 │ 0           │ Slave, Running       │ 23-12-14957 │ Monitor │
+└───────────┴─────────┴──────┴─────────────┴──────────────────────┴─────────────┴─────────┘
 ```
 
 #### list services
 
-```
-Usage: list services
-
 List all services and the servers they use.
 
+Usage:
 
-  Field             | Description
-  -----             | -----------
-  Service           | Service name
-  Router            | Router used by the service
-  Connections       | Current connection count
-  Total Connections | Total connection count
-  Targets           | Targets that the service uses
+```
+maxctrl [options] list services
+```
+
+Output fields:
+
+|  Field             | Description |
+|  -----             | ----------- |
+|  Service           | Service name |
+|  Router            | Router used by the service |
+|  Connections       | Current connection count |
+|  Total Connections | Total connection count |
+|  Targets           | Targets that the service uses |
+
+
+Exaple output:
+
+```
+$ maxctrl list services
+┌────────────────────┬────────────────┬─────────────┬───────────────────┬──────────────────────────────┐
+│ Service            │ Router         │ Connections │ Total Connections │ Targets                      │
+├────────────────────┼────────────────┼─────────────┼───────────────────┼──────────────────────────────┤
+│ Read-Write-Service │ readwritesplit │ 0           │ 0                 │ master, replica-1, replica-2 │
+└────────────────────┴────────────────┴─────────────┴───────────────────┴──────────────────────────────┘
 ```
 
 #### list listeners
 
-```
-Usage: list listeners [service]
-
 List listeners of all services. If a service is given, only listeners for that service are listed.
 
+Usage: 
 
-  Field   | Description
-  -----   | -----------
-  Name    | Listener name
-  Port    | The port where the listener listens
-  Host    | The address or socket where the listener listens
-  State   | Listener state
-  Service | Service that this listener points to
+```
+maxctrl [options] list listeners [service]
+```
+
+Output fields:
+
+|  Field   | Description |
+|  -----   | ----------- |
+|  Name    | Listener name |
+|  Port    | The port where the listener listens |
+|  Host    | The address or socket where the listener listens |
+|  State   | Listener state |
+|  Service | Service that this listener points to |
+
+Example Output:
+
+```
+$ maxctrl list listeners Read-Write-Service
+┌─────────────────────┬──────┬──────┬─────────┬────────────────────┐
+│ Name                │ Port │ Host │ State   │ Service            │
+├─────────────────────┼──────┼──────┼─────────┼────────────────────┤
+│ Read-Write-Listener │ 3306 │ ::   │ Running │ Read-Write-Service │
+└─────────────────────┴──────┴──────┴─────────┴────────────────────┘
 ```
 
 #### list monitors
 
-```
-Usage: list monitors
-
 List all monitors in MaxScale.
 
+Usage:
 
-  Field   | Description
-  -----   | -----------
-  Monitor | Monitor name
-  State   | Monitor state
-  Servers | The servers that this monitor monitors
+```
+maxctrl [options] list monitors
+```
+
+Output fields:
+
+|  Field   | Description |
+|  -----   | ----------- |
+|  Monitor | Monitor name |
+|  State   | Monitor state |
+|  Servers | The servers that this monitor monitors |
+
+Example output:
+
+```
+$ maxctrl list monitors
+┌─────────┬─────────┬──────────────────────────────┐
+│ Monitor │ State   │ Servers                      │
+├─────────┼─────────┼──────────────────────────────┤
+│ Monitor │ Running │ master, replica-1, replica-2 │
+└─────────┴─────────┴──────────────────────────────┘
 ```
 
 #### list sessions
 
-```
-Usage: list sessions
-
-Command specific ptions:
-      --rdns     Perform a reverse DNS lookup on client IPs  [boolean] [default: false]
-
 List all client sessions.
 
+Usage:
 
-  Field     | Description
-  -----     | -----------
-  Id        | Session ID
-  User      | Username
-  Host      | Client host address
-  Connected | Time when the session started
-  Idle      | How long the session has been idle, in seconds
-  Service   | The service where the session connected
-  Memory    | Memory usage (not exhaustive)
+```
+maxctrl list [options] sessions
+```
+
+Command specific options:
+```
+  --rdns     Perform a reverse DNS lookup on client IPs  [boolean] [default: false]
+```
+
+Output fields:
+
+|  Field     | Description |
+|  -----     | ----------- |
+|  Id        | Session ID |
+|  User      | Username |
+|  Host      | Client host address |
+|  Connected | Time when the session started |
+|  Idle      | How long the session has been idle, in seconds |
+|  Service   | The service where the session connected |
+|  Memory    | Memory usage (not exhaustive) |
+
+Example output:
+
+```
+$ maxctrl list sessions
+┌────┬────────┬──────────────┬─────────────────────────┬──────┬────────────────────┬────────┬──────────────┐
+│ Id │ User   │ Host         │ Connected               │ Idle │ Service            │ Memory │ I/O-Activity │
+├────┼────────┼──────────────┼─────────────────────────┼──────┼────────────────────┼────────┼──────────────┤
+│ 3  │ myuser │ 10.23.63.100 │ 11/22/2025, 10:31:13 AM │ 1.6  │ Read-Write-Service │ 133098 │ 14           │
+├────┼────────┼──────────────┼─────────────────────────┼──────┼────────────────────┼────────┼──────────────┤
+│ 2  │ myuser │ 10.23.63.100 │ 11/22/2025, 10:31:07 AM │ 7.8  │ Read-Write-Service │ 133098 │ 14           │
+└────┴────────┴──────────────┴─────────────────────────┴──────┴────────────────────┴────────┴──────────────┘
 ```
 
 #### list filters
 
-```
-Usage: list filters
-
-
 List all filters in MaxScale.
 
+Usage: 
 
-  Field   | Description
-  -----   | -----------
-  Filter  | Filter name
-  Service | Services that use the filter
-  Module  | The module that the filter uses
+```
+maxctrl [options] list filters
+```
+
+Output fields:
+
+|  Field   | Description |
+|  -----   | ----------- |
+|  Filter  | Filter name |
+|  Service | Services that use the filter |
+|  Module  | The module that the filter uses |
+
+Example output:
+
+```
+TODO
 ```
 
 #### list modules
 
-```
-Usage: list modules
-
 List all currently loaded modules.
 
+Usage:
 
-  Field   | Description
-  -----   | -----------
-  Module  | Module name
-  Type    | Module type
-  Version | Module version
+```
+maxctrl [options] list modules
+```
+
+Output fields:
+
+|  Field   | Description |
+|  -----   | ----------- |
+|  Module  | Module name |
+|  Type    | Module type |
+|  Version | Module version |
+  
+Example output:
+
+```
+$ maxctrl list modules
+┌─────────────────┬───────────────┬─────────┐
+│ Module          │ Type          │ Version │
+├─────────────────┼───────────────┼─────────┤
+│ maxscale        │ maxscale      │ 25.01.4 │
+├─────────────────┼───────────────┼─────────┤
+│ servers         │ servers       │ 25.01.4 │
+├─────────────────┼───────────────┼─────────┤
+│ MariaDBAuth     │ Authenticator │ V2.1.0  │
+├─────────────────┼───────────────┼─────────┤
+│ mariadbmon      │ Monitor       │ V1.5.0  │
+├─────────────────┼───────────────┼─────────┤
+│ MariaDBProtocol │ Protocol      │ V1.1.0  │
+├─────────────────┼───────────────┼─────────┤
+│ pp_sqlite       │ Parser        │ V1.0.0  │
+├─────────────────┼───────────────┼─────────┤
+│ readwritesplit  │ Router        │ V1.1.0  │
+└─────────────────┴───────────────┴─────────┘
 ```
 
 #### list threads
 
-```
-Usage: list threads
-
 List all worker threads.
 
+Usage:
 
-  Field       | Description
-  -----       | -----------
-  Id          | Thread ID
-  Current FDs | Current number of managed file descriptors
-  Total FDs   | Total number of managed file descriptors
-  Load (1s)   | Load percentage over the last second
-  Load (1m)   | Load percentage over the last minute
-  Load (1h)   | Load percentage over the last hour
+```
+maxctrl [options] list threads
+```
+
+Output fields:
+
+|  Field       | Description |
+|  -----       | ----------- |
+|  Id          | Thread ID |
+|  Current FDs | Current number of managed file descriptors |
+|  Total FDs   | Total number of managed file descriptors |
+|  Load (1s)   | Load percentage over the last second |
+|  Load (1m)   | Load percentage over the last minute |
+|  Load (1h)   | Load percentage over the last hour |
+
+Example output:
+
+```
+$ maxctrl list threads
+┌────┬─────────────┬───────────┬───────────┬───────────┬───────────┐
+│ Id │ Current FDs │ Total FDs │ Load (1s) │ Load (1m) │ Load (1h) │
+├────┼─────────────┼───────────┼───────────┼───────────┼───────────┤
+│ 0  │ 10          │ 10        │ 0         │ 0         │ 0         │
+├────┼─────────────┼───────────┼───────────┼───────────┼───────────┤
+│ 1  │ 4           │ 5         │ 0         │ 0         │ 0         │
+└────┴─────────────┴───────────┴───────────┴───────────┴───────────┘
 ```
 
 #### list users
 
+List the users that can be used to connect to the MaxScale REST API.
+
+Usage:
+
 ```
-Usage: list users
-
-
-List network the users that can be used to connect to the MaxScale REST API.
-
-
-  Field        | Description
-  -----        | -----------
-  Name         | User name
-  Type         | User type
-  Privileges   | User privileges
-  Created      | When the user was created
-  Last Updated | The last time the account password was updated
-  Last Login   | The last time the user logged in
+maxctrl [options] list users
 ```
+
+Output fields:
+
+|  Field        | Description |
+|  -----        | ----------- |
+|  Name         | User name |
+|  Type         | User type |
+|  Privileges   | User privileges |
+|  Created      | When the user was created |
+|  Last Updated | The last time the account password was updated |
+|  Last Login   | The last time the user logged in |
+
+Example output:
+
+```
+$ maxctrl list users
+┌───────┬──────┬────────────┬─────────┬──────────────┬─────────────────────────┐
+│ Name  │ Type │ Privileges │ Created │ Last Updated │ Last Login              │
+├───────┼──────┼────────────┼─────────┼──────────────┼─────────────────────────┤
+│ admin │ inet │ admin      │         │              │ 11/22/2025, 10:37:53 AM │
+└───────┴──────┴────────────┴─────────┴──────────────┴─────────────────────────┘
+```
+
 
 #### list commands
 
-```
-Usage: list commands
-
 List all available module commands.
 
+Usage:
 
-  Field    | Description
-  -----    | -----------
-  Module   | Module name
-  Commands | Available commands
+```
+maxctrl [options] list commands
+```
+
+Output fields:
+
+|  Field    | Description |
+|  -----    | ----------- |
+|  Module   | Module name |
+|  Commands | Available commands |
+
+Example output:
+
+```
+$ maxctrl list commands
+┌─────────────────┬────────────────────────────────────────────────────────────────────────────┐
+│ Module          │ Commands                                                                   |
+├─────────────────┼────────────────────────────────────────────────────────────────────────────┤
+│ maxscale        │                                                                            |
+├─────────────────┼────────────────────────────────────────────────────────────────────────────┤
+│ servers         │                                                                            |
+├─────────────────┼────────────────────────────────────────────────────────────────────────────┤
+│ MariaDBAuth     │                                                                            | 
+├─────────────────┼────────────────────────────────────────────────────────────────────────────┤
+│ mariadbmon      │ async-create-backup, async-cs-add-node, [...], failover, [...], switchover │
+├─────────────────┼────────────────────────────────────────────────────────────────────────────┤
+│ MariaDBProtocol │                                                                            │
+├─────────────────┼────────────────────────────────────────────────────────────────────────────┤
+│ pp_sqlite       │                                                                            │
+├─────────────────┼────────────────────────────────────────────────────────────────────────────┤
+│ readwritesplit  │ reset-gtid                                                                 │
+└─────────────────┴────────────────────────────────────────────────────────────────────────────┘
 ```
 
 #### list queries
 
+List all active queries being executed through MaxScale. 
+
+In order for this command to work, MaxScale must be configured with `retain_last_statements` set to a value greater than 0.
+<!-- TODO: make retain_last_statemens link to that settings description -->
+
+Usage:
+
 ```
-Usage: list queries
+maxctrl [options] list queries
+```
 
 List queries options:
+```
   -l, --max-length  Maximum SQL length to display. Use --max-length=0 for no limit.  [number] [default: 120]
+```
+Output columns:
 
+|  Field    | Description |
+| --------- | ----------- |
+| Id | Maxscale session id |
+| User | Database user |
+| Host | Host the user connected from |
+| Duration | How long the query has already been running |
+| Query | The query text |
 
-List all active queries being executed through MaxScale. In order for this command to work, MaxScale must be configured with 'retain_last_statements' set to a value greater than 0.
+Example output:
+
+```
+$ maxctrl list queries
+┌────┬────────┬──────────────┬──────────┬──────────────────┐
+│ Id │ User   │ Host         │ Duration │ Query            │
+├────┼────────┼──────────────┼──────────┼──────────────────┤
+│ 5  │ myuser │ 10.23.63.100 │ 2s       │ select sleep(60) │
+└────┴────────┴──────────────┴──────────┴──────────────────┘
 ```
 
 ### show
