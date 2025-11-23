@@ -902,14 +902,14 @@ Output fields:
 
 | Field | Description |
 | ----- | ----------- |
-| Statement | TODO |
-| Hits  | TODO |
-| Count | TODO |
-| Avg. Duration | TODO |
-| Moving Avg. Duration | TODO |
-| Sum Duration | TODO |
-| Type  | TODO |
-| Size  | TODO |
+| Statement │ TODO |
+| Hits  │ TODO |
+│ Count  │ TODO |
+│ Avg. Duration  │ TODO |
+│ Moving Avg. Duration  │ TODO |
+│ Sum Duration  │ TODO |
+│ Type  │ TODO |
+│ Size  │ TODO |
 
 #### show dbusers
 
@@ -937,50 +937,78 @@ maxctrl [options] show dbusers <service>
 
 #### set server
 
+Set a servers state.
+
 ```
 Usage: set server <server> <state>
+```
 
+Additional options:
+```
+  --force  If combined with the `maintenance` state, this forcefully closes all connections to the target server  [boolean] [default: false]
+```
 
-Set options:
-      --force  If combined with the `maintenance` state, this forcefully closes all connections to the target server  [boolean] [default: false]
+If <server> is monitored by a monitor, this command should only be used to set the server into the `maintenance` or the `drain` state. Any other states will be overridden by the monitor on the next monitoring interval. 
 
-If <server> is monitored by a monitor, this command should only be used to set the server into the `maintenance` or the `drain` state. Any other states will be overridden by the monitor on the next monitoring interval. To manually control server states, use the `stop monitor <name>` command to stop the monitor before setting the server states manually.
+To manually control server states, use the [`stop monitor <name>`](#stop-monitor) command to stop the monitor before setting the server states manually.
 
-When a server is set into the `drain` state, no new connections to it are allowed but existing connections are allowed to gracefully close. Servers with the `Master` status cannot be drained or set into maintenance mode. To clear a state set by this command, use the `clear server` command.
+When a server is set into the `drain` state, no new connections to it are allowed but existing connections are allowed to gracefully close. Servers with the `Master` status cannot be drained or set into maintenance mode. To clear a state set by this command, use the [`clear server`](#clear-server) command.
 
 To forcefully close all connections to a server, use `set server <name> maintenance --force`
+
+<!-- TODO mention all supported <state> values -->
+
+Example output:
+
 ```
+$ maxctrl [options] set server slave-1 maintenance
+OK    
+```
+
 
 ### clear
 
 #### clear server
 
-```
-Usage: clear server <server> <state>
+This command clears a server state set by the [`set server <server> <state>`](#set-server) command.
 
-This command clears a server state set by the `set server <server> <state>` command
+Usage: 
 ```
+clear server <server> <state>
+```
+
+<!-- TODO does this command have an extra --force option like its set counterpart? -->
 
 ### enable
 
 #### enable log-priority
 
-```
-Usage: enable log-priority <log>
+Enable log output for a specific log priority.
 
-
-The `debug` log priority is only available for debug builds of MaxScale.
+Usage:
 ```
+maxctrl [options] enable log-priority <log>
+```
+
+Possible `<log>` values are `warning`, `notice`,`info` and `debug`.  
+
+The `debug` log priority is only available for debug builds of MaxScale.  
+There is no `error` priority as such messages are always logged.
+
 
 ### disable
 
 #### disable log-priority
 
-```
-Usage: disable log-priority <log>
+Disable log output for a specific log priority.
 
-The `debug` log priority is only available for debug builds of MaxScale.
+Usage:
+```  
+maxctrl [option] disable log-priority <log>
 ```
+
+The `debug` log priority is only available for debug builds of MaxScale.  
+There is no `error` priority as such messages are always logged.
 
 ### create
 
