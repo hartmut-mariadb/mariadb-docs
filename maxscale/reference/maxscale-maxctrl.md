@@ -460,490 +460,478 @@ $ maxctrl list queries
 
 #### show server
 
+Show detailed information about a server.
+ 
+The `Parameters` field contains the currently configured parameters for this server. See [`alter server`](#alter-server) for more details about altering server parameters.
+
+Usage:
+
 ```
-Usage: show server <server>
-
-
-Show detailed information about a server. The `Parameters` field contains the currently configured parameters for this server. See `--help alter server` for more details about altering server parameters.
-
-
-  Field               | Description
-  -----               | -----------
-  Server              | Server name
-  Source              | File where the object is stored in
-  Address             | Address where the server listens
-  Port                | The port on which the server listens
-  State               | Server state
-  Version             | Server version
-  Uptime              | Server uptime in seconds
-  Last Event          | The type of the latest event
-  Triggered At        | Time when the latest event was triggered at
-  Services            | Services that use this server
-  Monitors            | Monitors that monitor this server
-  Master ID           | The server ID of the master
-  Node ID             | The node ID of this server
-  Slave Server IDs    | List of slave server IDs
-  Current Connections | Current connection count
-  Total Connections   | Total cumulative connection count
-  Max Connections     | Maximum number of concurrent connections ever seen
-  Statistics          | Server statistics
-  Parameters          | Server parameters
+maxctrl [options] show server <server>
 ```
+
+Output fields:
+
+|  Field               | Description |
+|  -----               | ----------- |
+|  Server              | Server name |
+|  Source              | File where the object is stored in |
+|  Address             | Address where the server listens |
+|  Port                | The port on which the server listens |
+|  State               | Server state |
+|  Version             | Server version |
+|  Uptime              | Server uptime in seconds |
+|  Last Event          | The type of the latest event |
+|  Triggered At        | Time when the latest event was triggered at |
+|  Services            | Services that use this server |
+|  Monitors            | Monitors that monitor this server |
+|  Master ID           | The server ID of the master |
+|  Node ID             | The node ID of this server |
+|  Slave Server IDs    | List of slave server IDs |
+|  Current Connections | Current connection count |
+|  Total Connections   | Total cumulative connection count |
+|  Max Connections     | Maximum number of concurrent connections ever seen |
+|  Statistics          | Server statistics |
+|  Parameters          | Server parameters |
+
 
 #### show servers
 
-```
-Usage: show servers
-
 Show detailed information about all servers.
 
+Usage:
 
-  Field               | Description
-  -----               | -----------
-  Server              | Server name
-  Source              | File where the object is stored in
-  Address             | Address where the server listens
-  Port                | The port on which the server listens
-  State               | Server state
-  Version             | Server version
-  Uptime              | Server uptime in seconds
-  Last Event          | The type of the latest event
-  Triggered At        | Time when the latest event was triggered at
-  Services            | Services that use this server
-  Monitors            | Monitors that monitor this server
-  Master ID           | The server ID of the master
-  Node ID             | The node ID of this server
-  Slave Server IDs    | List of slave server IDs
-  Current Connections | Current connection count
-  Total Connections   | Total cumulative connection count
-  Max Connections     | Maximum number of concurrent connections ever seen
-  Statistics          | Server statistics
-  Parameters          | Server parameters
 ```
+maxctrl [options] show servers
+```
+
+Output fields are the same as with [`show server`](#show-server) above, just repeated for every server.
+
 
 #### show service
 
+Show detailed information about a service.   
+  
+The `Parameters` field contains the currently configured parameters for this service. See [`alter service`](#alter-service) for more details about altering service parameters.
+
+Usage: 
+
 ```
-Usage: show service <service>
-
-Show detailed information about a service. The `Parameters` field contains the currently configured parameters for this service. See `--help alter service` for more details about altering service parameters.
-
-
-  Field               | Description
-  -----               | -----------
-  Service             | Service name
-  Source              | File where the object is stored in
-  Router              | Router that the service uses
-  State               | Service state
-  Started At          | When the service was started
-  Users Loaded At     | When the users for the service were loaded
-  Current Connections | Current connection count
-  Total Connections   | Total connection count
-  Max Connections     | Historical maximum connection count
-  Cluster             | The cluster that the service uses
-  Servers             | Servers that the service uses
-  Services            | Services that the service uses
-  Filters             | Filters that the service uses
-  Parameters          | Service parameter
-  Router Diagnostics  | Diagnostics provided by the router module
+maxctrl [options] show service <service>
 ```
+
+Output Fields:
+
+|  Field               | Description |
+|  -----               | ----------- |
+|  Service             | Service name |
+|  Source              | File where the object is stored in |
+|  Router              | Router that the service uses |
+|  State               | Service state |
+|  Started At          | When the service was started |
+|  Users Loaded At     | When the users for the service were loaded |
+|  Current Connections | Current connection count |
+|  Total Connections   | Total connection count |
+|  Max Connections     | Historical maximum connection count |
+|  Cluster             | The cluster that the service uses |
+|  Servers             | Servers that the service uses |
+|  Services            | Services that the service uses |
+|  Filters             | Filters that the service uses |
+|  Parameters          | Service parameter |
+|  Router Diagnostics  | Diagnostics provided by the router module |
 
 #### show services
 
-```
-Usage: show services
-
 Show detailed information about all services.
 
+Usage: 
 
-  Field               | Description
-  -----               | -----------
-  Service             | Service name
-  Source              | File where the object is stored in
-  Router              | Router that the service uses
-  State               | Service state
-  Started At          | When the service was started
-  Users Loaded At     | When the users for the service were loaded
-  Current Connections | Current connection count
-  Total Connections   | Total connection count
-  Max Connections     | Historical maximum connection count
-  Cluster             | The cluster that the service uses
-  Servers             | Servers that the service uses
-  Services            | Services that the service uses
-  Filters             | Filters that the service uses
-  Parameters          | Service parameter
-  Router Diagnostics  | Diagnostics provided by the router module
 ```
+maxctrl [options] show services
+```
+
+For output details see [`show service`](#show-service) above.
+
+
 
 #### show monitor
 
+Show detailed information about a monitor.  
+ 
+The `Parameters` field contains the currently configured parameters for this monitor. See [`alter monitor`](#alter-monitor) for more details about altering monitor parameters.
+
+Usage:
+
 ```
-Usage: show monitor <monitor>
-
-Show detailed information about a monitor. The `Parameters` field contains the currently configured parameters for this monitor. See `--help alter monitor` for more details about altering monitor parameters.
-
-
-  Field               | Description
-  -----               | -----------
-  Monitor             | Monitor name
-  Source              | File where the object is stored in
-  Module              | Monitor module
-  State               | Monitor state
-  Servers             | The servers that this monitor monitors
-  Parameters          | Monitor parameters
-  Monitor Diagnostics | Diagnostics provided by the monitor module
+maxctrl [options] show monitor <monitor>
 ```
+
+Output fields:
+
+|  Field               | Description |
+|  -----               | ----------- |
+|  Monitor             | Monitor name |
+|  Source              | File where the object is stored in |
+|  Module              | Monitor module |
+|  State               | Monitor state |
+|  Servers             | The servers that this monitor monitors |
+|  Parameters          | Monitor parameters |
+|  Monitor Diagnostics | Diagnostics provided by the monitor module |
+
 
 #### show monitors
 
-```
-Usage: show monitors
-
-
 Show detailed information about all monitors.
 
+Usage:
 
-  Field               | Description
-  -----               | -----------
-  Monitor             | Monitor name
-  Source              | File where the object is stored in
-  Module              | Monitor module
-  State               | Monitor state
-  Servers             | The servers that this monitor monitors
-  Parameters          | Monitor parameters
-  Monitor Diagnostics | Diagnostics provided by the monitor module
 ```
+maxctrl [options]  show monitors
+```
+
+For output details see [`show monitor`](#show-monitor) above.
+
 
 #### show session
 
+Show detailed information about a single session.
+
+The list of sessions can be retrieved with the `list sessions` command. The <session> is the session ID of a particular session.
+
+Usage: 
+
 ```
-Usage: show session <session>
+maxctrl [opions] show session <session>
+```
 
 Additional Options:
-      --rdns     Perform a reverse DNS lookup on client IPs  [boolean] [default: false]
-
-Show detailed information about a single session. The list of sessions can be retrieved with the `list sessions` command. The <session> is the session ID of a particular session.
-
-The `Connections` field lists the servers to which the session is connected and the `Connection IDs` field lists the IDs for those connections.
-
-
-  Field             | Description
-  -----             | -----------
-  Id                | Session ID
-  Service           | The service where the session connected
-  State             | Session state
-  User              | Username
-  Host              | Client host address
-  Port              | Client network port
-  Database          | Current default database of the connection
-  Connected         | Time when the session started
-  Idle              | How long the session has been idle, in seconds
-  Parameters        | Session parameters
-  Client TLS Cipher | Client TLS cipher
-  Connections       | Ordered list of backend connections
-  Connection IDs    | Thread IDs for the backend connections
-  Queries           | Query history
-  Log               | Per-session log messages
-  Memory            | Memory usage (not exhaustive)
 ```
+--rdns     Perform a reverse DNS lookup on client IPs  [boolean] [default: false]
+```
+
+Output Fields:
+
+|  Field             | Description |
+|  -----             | ----------- |
+|  Id                | Session ID |
+|  Service           | The service where the session connected |
+|  State             | Session state |
+|  User              | Username |
+|  Host              | Client host address |
+|  Port              | Client network port |
+|  Database          | Current default database of the connection |
+|  Connected         | Time when the session started |
+|  Idle              | How long the session has been idle, in seconds |
+|  Parameters        | Session parameters |
+|  Client TLS Cipher | Client TLS cipher |
+|  Connections       | Ordered list of backend connections |
+|  Connection IDs    | Thread IDs for the backend connections |
+|  Queries           | Query history |
+|  Log               | Per-session log messages |
+|  Memory            | Memory usage (not exhaustive) |
 
 #### show sessions
 
+Show detailed information about all sessions.
+
+Usage: 
+
 ```
-Usage: show sessions
+maxctrl [options] show sessions
+```  
 
 Additional Options:
-      --rdns     Perform a reverse DNS lookup on client IPs  [boolean] [default: false]
-
-Show detailed information about all sessions. See `--help show session` for more details.
-
-
-  Field             | Description
-  -----             | -----------
-  Id                | Session ID
-  Service           | The service where the session connected
-  State             | Session state
-  User              | Username
-  Host              | Client host address
-  Port              | Client network port
-  Database          | Current default database of the connection
-  Connected         | Time when the session started
-  Idle              | How long the session has been idle, in seconds
-  Parameters        | Session parameters
-  Client TLS Cipher | Client TLS cipher
-  Connections       | Ordered list of backend connections
-  Connection IDs    | Thread IDs for the backend connections
-  Queries           | Query history
-  Log               | Per-session log messages
-  Memory            | Memory usage (not exhaustive)
+```  
+  --rdns     Perform a reverse DNS lookup on client IPs  [boolean] [default: false]
 ```
+
+For output details see [`show session`](#show-session) above.
 
 #### show filter
 
+Show detailed information about a filter.
+
+Usage: 
+
 ```
-Usage: show filter <filter>
-
-
-The list of services that use this filter is show in the `Services` field.
-
-
-  Field       | Description
-  -----       | -----------
-  Filter      | Filter name
-  Source      | File where the object is stored in
-  Module      | The module that the filter uses
-  Services    | Services that use the filter
-  Parameters  | Filter parameters
-  Diagnostics | Filter diagnostics
+maxctrl [options] show filter <filter>
 ```
+
+
+Output fields:
+
+|  Field       | Description |
+|  -----       | ----------- |
+|  Filter      | Filter name |
+|  Source      | File where the object is stored in |
+|  Module      | The module that the filter uses |
+|  Services    | Services that use the filter |
+|  Parameters  | Filter parameters |
+|  Diagnostics | Filter diagnostics |
+
 
 #### show filters
 
-```
-Usage: show filters
-
 Show detailed information of all filters.
 
+Usage: 
 
-  Field       | Description
-  -----       | -----------
-  Filter      | Filter name
-  Source      | File where the object is stored in
-  Module      | The module that the filter uses
-  Services    | Services that use the filter
-  Parameters  | Filter parameters
-  Diagnostics | Filter diagnostics
 ```
+maxctrl [options] show filters
+```
+
+For output details see [`show filter`](#show-filter) above.
+
 
 #### show listener
 
+Show detailed information on a listener.
+
+Usage: 
 ```
-Usage: show listener <listener>
-
-
-
-
-
-  Field      | Description
-  -----      | -----------
-  Name       | Listener name
-  Source     | File where the object is stored in
-  Service    | Services that the listener points to
-  Parameters | Listener parameters
+maxctrl [options] show listener <listener>
 ```
+
+Output fields:
+
+|  Field      | Description |
+|  -----      | ----------- |
+|  Name       | Listener name |
+|  Source     | File where the object is stored in |
+|  Service    | Services that the listener points to |
+|  Parameters | Listener parameters |
+|  Diagnostics | Filter diagnostics |
 
 #### show listeners
 
+Show detailed information of all listeners.
+
+Usage:
+
 ```
-Usage: show filters
-
-Show detailed information of all filters.
-
-
-  Field       | Description
-  -----       | -----------
-  Filter      | Filter name
-  Source      | File where the object is stored in
-  Module      | The module that the filter uses
-  Services    | Services that use the filter
-  Parameters  | Filter parameters
-  Diagnostics | Filter diagnostics
+maxscale [options] show filters
 ```
+
+For output details see [`show listener`](#show-listener) above.
+
 
 #### show module
 
-```
-Usage: show module <module>
-
 This command shows all available parameters as well as detailed version information of a loaded module.
 
-
-  Field       | Description
-  -----       | -----------
-  Module      | Module name
-  Type        | Module type
-  Version     | Module version
-  Maturity    | Module maturity
-  Description | Short description about the module
-  Parameters  | All the parameters that the module accepts
-  Commands    | Commands that the module provides
+Usage: 
 ```
+maxctrl [options] show module <module>
+```
+
+
+|  Field       | Description |
+|  -----       | ----------- |
+|  Module      | Module name |
+|  Type        | Module type |
+|  Version     | Module version |
+|  Maturity    | Module maturity |
+|  Description | Short description about the module |
+|  Parameters  | All the parameters that the module accepts |
+|  Commands    | Commands that the module provides |
+
 
 #### show modules
 
-```
-Usage: show modules
-
-
 Displays detailed information about all modules.
 
-
-  Field       | Description
-  -----       | -----------
-  Module      | Module name
-  Type        | Module type
-  Version     | Module version
-  Maturity    | Module maturity
-  Description | Short description about the module
-  Parameters  | All the parameters that the module accepts
-  Commands    | Commands that the module provides
 ```
+Usage: show modules
+```
+
+For output details see [`show module`](#show-module) above.
+
+
 
 #### show maxscale
 
+Show information about the maxscale instance itself. See [`alter maxscale`](#alter-maxscale) for more details about altering MaxScale parameters.
+
+
+Usage: 
 ```
-Usage: show maxscale
-
-
-See `--help alter maxscale` for more details about altering MaxScale parameters.
-
-
-  Field        | Description
-  -----        | -----------
-  Version      | MaxScale version
-  Commit       | MaxScale commit ID
-  Started At   | Time when MaxScale was started
-  Activated At | Time when MaxScale left passive mode
-  Uptime       | Time MaxScale has been running
-  Config Sync  | MaxScale configuration synchronization
-  Parameters   | Global MaxScale parameters
-  System       | System Information
+maxctrl [options] show maxscale
 ```
+
+
+|  Field        | Description |
+|  -----        | ----------- |
+|  Version      | MaxScale version |
+|  Commit       | MaxScale commit ID |
+|  Started At   | Time when MaxScale was started |
+|  Activated At | Time when MaxScale left passive mode |
+|  Uptime       | Time MaxScale has been running |
+|  Config Sync  | MaxScale configuration synchronization |
+|  Parameters   | Global MaxScale parameters |
+|  System       | System Information |
+
 
 #### show thread
 
-```
-Usage: show thread <thread>
-
 Show detailed information about a worker thread.
 
-
-  Field                  | Description
-  -----                  | -----------
-  Id                     | Thread ID
-  State                  | The state of the thread
-  Accepts                | Number of TCP accepts done by this thread
-  Reads                  | Number of EPOLLIN events
-  Writes                 | Number of EPOLLOUT events
-  Hangups                | Number of EPOLLHUP and EPOLLRDUP events
-  Errors                 | Number of EPOLLERR events
-  Avg event queue length | Average number of events returned by one epoll_wait call
-  Max event queue length | Maximum number of events returned by one epoll_wait call
-  Max exec time          | The longest time spent processing events returned by a epoll_wait call
-  Max queue time         | The longest time an event had to wait before it was processed
-  Current FDs            | Current number of managed file descriptors
-  Total FDs              | Total number of managed file descriptors
-  Load (1s)              | Load percentage over the last second
-  Load (1m)              | Load percentage over the last minute
-  Load (1h)              | Load percentage over the last hour
-  QC cache size          | Query classifier size
-  QC cache inserts       | Number of times a new query was added into the query classification cache
-  QC cache hits          | How many times a query classification was found in the query classification cache
-  QC cache misses        | How many times a query classification was not found in the query classification cache
-  QC cache evictions     | How many times a query classification result was evicted from the query classification cache
-  Sessions               | The current number of sessions
-  Zombies                | The current number of zombie connections, waiting to be discarded
-  Memory                 | The current (partial) memory usage
+Usage: 
 ```
+maxctrl [options] show thread <thread>
+```
+
+
+|  Field                  | Description |
+|  -----                  | ----------- |
+|  Id                     | Thread ID |
+|  State                  | The state of the thread |
+|  Accepts                | Number of TCP accepts done by this thread |
+|  Reads                  | Number of EPOLLIN events |
+|  Writes                 | Number of EPOLLOUT events |
+|  Hangups                | Number of EPOLLHUP and EPOLLRDUP events |
+|  Errors                 | Number of EPOLLERR events |
+|  Avg event queue length | Average number of events returned by one epoll_wait call |
+|  Max event queue length | Maximum number of events returned by one epoll_wait call |
+|  Max exec time          | The longest time spent processing events returned by a epoll_wait call |
+|  Max queue time         | The longest time an event had to wait before it was processed |
+|  Current FDs            | Current number of managed file descriptors |
+|  Total FDs              | Total number of managed file descriptors |
+|  Load (1s)              | Load percentage over the last second |
+|  Load (1m)              | Load percentage over the last minute |
+|  Load (1h)              | Load percentage over the last hour |
+|  QC cache size          | Query classifier size |
+|  QC cache inserts       | Number of times a new query was added into the query classification cache |
+|  QC cache hits          | How many times a query classification was found in the query classification cache |
+|  QC cache misses        | How many times a query classification was not found in the query classification cache |
+|  QC cache evictions     | How many times a query classification result was evicted from the query classification cache |
+|  Sessions               | The current number of sessions |
+|  Zombies                | The current number of zombie connections, waiting to be discarded |
+|  Memory                 | The current (partial) memory usage |
+
 
 #### show threads
 
-```
-Usage: show threads
-
-Additional options
-
-  --kind     The kind of threads to display, only the running or all.  [string] [choices: "running", "all"] [default: "running"]
-
 Show detailed information about all worker threads.
 
-
-  Field                  | Description
-  -----                  | -----------
-  Id                     | Thread ID
-  State                  | The state of the thread
-  Accepts                | Number of TCP accepts done by this thread
-  Reads                  | Number of EPOLLIN events
-  Writes                 | Number of EPOLLOUT events
-  Hangups                | Number of EPOLLHUP and EPOLLRDUP events
-  Errors                 | Number of EPOLLERR events
-  Avg event queue length | Average number of events returned by one epoll_wait call
-  Max event queue length | Maximum number of events returned by one epoll_wait call
-  Max exec time          | The longest time spent processing events returned by a epoll_wait call
-  Max queue time         | The longest time an event had to wait before it was processed
-  Current FDs            | Current number of managed file descriptors
-  Total FDs              | Total number of managed file descriptors
-  Load (1s)              | Load percentage over the last second
-  Load (1m)              | Load percentage over the last minute
-  Load (1h)              | Load percentage over the last hour
-  QC cache size          | Query classifier size
-  QC cache inserts       | Number of times a new query was added into the query classification cache
-  QC cache hits          | How many times a query classification was found in the query classification cache
-  QC cache misses        | How many times a query classification was not found in the query classification cache
-  QC cache evictions     | How many times a query classification result was evicted from the query classification cache
-  Sessions               | The current number of sessions
-  Zombies                | The current number of zombie connections, waiting to be discarded
-  Memory                 | The current (partial) memory usage
+Usage: 
 ```
+maxctrl [options] show threads
+```
+
+Additional options
+```
+  --kind     The kind of threads to display, only the running or all.  [string] [choices: "running", "all"] [default: "running"]
+```
+
+
+|  Field                  | Description |
+|  -----                  | ----------- |
+|  Id                     | Thread ID |
+|  State                  | The state of the thread |
+|  Accepts                | Number of TCP accepts done by this thread |
+|  Reads                  | Number of EPOLLIN events |
+|  Writes                 | Number of EPOLLOUT events |
+|  Hangups                | Number of EPOLLHUP and EPOLLRDUP events |
+|  Errors                 | Number of EPOLLERR events |
+|  Avg event queue length | Average number of events returned by one epoll_wait call |
+|  Max event queue length | Maximum number of events returned by one epoll_wait call |
+|  Max exec time          | The longest time spent processing events returned by a epoll_wait call |
+|  Max queue time         | The longest time an event had to wait before it was processed |
+|  Current FDs            | Current number of managed file descriptors |
+|  Total FDs              | Total number of managed file descriptors |
+|  Load (1s)              | Load percentage over the last second |
+|  Load (1m)              | Load percentage over the last minute |
+|  Load (1h)              | Load percentage over the last hour |
+|  QC cache size          | Query classifier size |
+|  QC cache inserts       | Number of times a new query was added into the query classification cache |
+|  QC cache hits          | How many times a query classification was found in the query classification cache |
+|  QC cache misses        | How many times a query classification was not found in the query classification cache |
+|  QC cache evictions     | How many times a query classification result was evicted from the query classification cache |
+|  Sessions               | The current number of sessions |
+|  Zombies                | The current number of zombie connections, waiting to be discarded |
+|  Memory                 | The current (partial) memory usage |
+
 
 #### show logging
 
+Show information on current logging configuration.
+
+See [`alter logging`](#alter-logging) for more details about altering logging parameters.
+
+Usage: 
 ```
-Usage: show logging
-
-See `--help alter logging` for more details about altering logging parameters.
-
-
-  Field              | Description
-  -----              | -----------
-  Current Log File   | The current log file MaxScale is logging into
-  Enabled Log Levels | List of log levels enabled in MaxScale
-  Parameters         | Logging parameters
+maxctrl [options] show logging
 ```
+
+
+|  Field              | Description |
+|  -----              | ----------- |
+|  Current Log File   | The current log file MaxScale is logging into |
+|  Enabled Log Levels | List of log levels enabled in MaxScale |
+|  Parameters         | Logging parameters |
+
 
 #### show commands
 
+This command shows the parameters a specific command expects with the parameter descriptions.
+
+For a list of available commands use [`list-commands`](#list-commands).
+
+Usage:
 ```
-Usage: show commands <module>
-
-
-This command shows the parameters the command expects with the parameter descriptions.
-
-
-  Field        | Description
-  -----        | -----------
-  Command      | Command name
-  Parameters   | Parameters the command supports
-  Descriptions | Parameter descriptions
+maxctrl [options] show commands <module>
 ```
+
+
+|  Field        | Description |
+|  -----        | ----------- |
+|  Command      | Command name |
+|  Parameters   | Parameters the command supports |
+|  Descriptions | Parameter descriptions |
+
 
 #### show qc\_cache
 
-```
-Usage: show qc_cache
-
 Show contents (statement and hits) of query classifier cache.
+
 ```
+maxctrl [options] show qc_cache
+```
+
+Output fields:
+
+| Field | Description |
+| ----- | ----------- |
+| Statement | TODO |
+| Hits  | TODO |
+| Count | TODO |
+| Avg. Duration | TODO |
+| Moving Avg. Duration | TODO |
+| Sum Duration | TODO |
+| Type  | TODO |
+| Size  | TODO |
 
 #### show dbusers
 
-```
-Usage: show dbusers <service>
-
 Show information about the database users of the service.
 
-
-  Field  | Description
-  -----  | -----------
-  User   | The user name of the account
-  Host   | The host of the account
-  Plugin | Authentication plugin
-  TLS    | Whether TLS is required from this user
-  Super  | Does the user have a SUPER grant
-  Global | Does the user have global database access
-  Proxy  | Whether this is a proxy user
-  Role   | The default role for this user
+Usage: 
 ```
+maxctrl [options] show dbusers <service>
+```
+
+
+|  Field  | Description |
+|  -----  | ----------- |
+|  User   | The user name of the account |
+|  Host   | The host of the account |
+|  Plugin | Authentication plugin |
+|  TLS    | Whether TLS is required from this user |
+|  Super  | Does the user have a SUPER grant |
+|  Global | Does the user have global database access |
+|  Proxy  | Whether this is a proxy user |
+|  Role   | The default role for this user |
+
 
 ### set
 
