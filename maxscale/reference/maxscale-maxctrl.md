@@ -1424,12 +1424,14 @@ The order of the filters given as the second parameter will also be the order in
 
 #### rotate logs
 
-```
-Usage: rotate logs
+Close and re-open logg files.
 
-
-This command is intended to be used with the `logrotate` command.
+Usage:
 ```
+maxctrl [options] rotate logs
+```
+
+This command is intended to be used in conjunction with the `logrotate` command or similar log rotation services, it does not perform any actual rotation by itself.
 
 ### reload
 
