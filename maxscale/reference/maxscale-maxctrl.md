@@ -1064,14 +1064,23 @@ Legacy syntax:
 
 #### create monitor
 
+Create a new monitor.
+
+Usage: 
 ```
-Usage: create monitor <name> <module> [params...]
+create monitor <name> <module> [params...] [cmd_options...]
+```
 
 Create monitor options:
-      --servers  Link the created monitor to these servers. All non-option arguments after --servers are interpreted as server names e.g. `--servers srv1 srv2 srv3`.  [array]
-
-The list of servers given with the --servers option should not contain any servers that are already monitored by another monitor. The last argument to this command is a list of key=value parameters given as the monitor parameters. The redundant option parameters have been deprecated in MaxScale 22.08.
 ```
+  --servers  Link the created monitor to these servers. [array]  
+```
+
+The last non-option argument to this command is a list of key=value parameters given as the monitor parameters. The `--servers` option must be used after any `<params...>` only. 
+
+The list of servers given with the `--servers` option should not contain any servers that are already monitored by another monitor. The last argument to this command is a list of `key=value` parameters given as the monitor parameters.   
+
+The redundant options `--monitor-user` and `--monitor-password` have been deprecated as of MaxScale 22.08.
 
 #### create service
 
