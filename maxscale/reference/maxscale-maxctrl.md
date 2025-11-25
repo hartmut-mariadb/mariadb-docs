@@ -1014,17 +1014,52 @@ There is no `error` priority as such messages are always logged.
 
 #### create server
 
+
+Create and set up a new backend database server.
+
+Usage:  
+
 ```
-Usage: create server <name> <host|socket> [port] [params...]
+maxscale [options] create server <name> [cmd_options] <host|socket> [port] [params...]
+```
 
-Create server options:
-      --services  Link the created server to these services  [array]
-      --monitors  Link the created server to these monitors  [array]
+Command specific options:  
+```
+  --services    Link the created server to these services  [array]
+  --monitor     Link the created server to these monitors  [string]  
+  --monitors    Same as --monitor                          [string]
+  --copy        Copy settings from existing server         [string]  
+  --skip-checks Skip monitor connection check
+```
 
+ The configuration parameters for the created object must be passed as `key=value` pairs.
+ 
+For example, to create a server that listens on port 3306 at 192.168.0.123, the following command can be used:
 
-The created server will not be used by any services or monitors unless the --services or --monitors options are given. The list of servers a service or a monitor uses can be altered with the `link` and `unlink` commands. If the <host|socket> argument is an absolute path, the server will use a local UNIX domain socket connection. In this case the [port] argument is ignored.
+   create server MyServer address=192.168.0.123 port=3306
 
-The recommended way of declaring parameters is with the new `key=value` syntax added in MaxScale 6.2.0. Note that for some parameters (e.g. `extra_port` and `proxy_protocol`) this is the only way to pass them. The redundant option parameters have been deprecated in MaxScale 22.08.
+ To use the server in a service or a monitor, use the `--services` or `--monitor` options, or use the [`link`](#link) commands, e.g.:
+ 
+```
+   create server MyServer address=192.168.0.123 port=3306 --services myService1 myService2 --monitor myMonitor
+```
+ 
+ If the `--monitor` option is used, a connectivity and credentials check is done by the monitor before the server is created. If the monitor fails to successfully connect to the server, the server is not created. To bypass this check, use the `--skip-checks` option.
+
+If the first two arguments are not `key=value` pairs, the command is interpreted with the legacy syntax. In this mode, if the `<host|socket>` argument is an absolute path, the server will use a local UNIX domain socket connection. In this case the third `[port]` argument is ignored.
+
+The `--copy` option makes creating multiple similarly configured servers easier. For example
+```
+maxctrl create server server2 --copy=server1 address=server2.my.host.com
+```
+would use the settings of `server1` for `server2` but use a custom value for the address setting. Note that this does not copy `service` and monitor links though.
+ 
+Note: The legacy syntax where the address and port are given as the second and third arguments has been deprecated in MaxScale 24.02, `address=...` and `port=...`
+key-value syntax should be uses now instead.
+
+Legacy syntax:
+ ```
+ create server <name> <host|socket> [port] [params...]
 ```
 
 #### create monitor
