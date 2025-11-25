@@ -1020,7 +1020,7 @@ Create and set up a new backend database server.
 Usage:  
 
 ```
-maxscale [options] create server <name> [cmd_options] <host|socket> [port] [params...]
+maxscale [options] create server <name> [params...] [cmd_options...]
 ```
 
 Command specific options:  
@@ -1059,7 +1059,7 @@ key-value syntax should be uses now instead.
 
 Legacy syntax:
  ```
- create server <name> <host|socket> [port] [params...]
+ create server <name> <host|socket> [port] [params...] [cmd_options...]
 ```
 
 #### create monitor
