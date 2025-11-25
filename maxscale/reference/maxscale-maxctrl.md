@@ -1078,7 +1078,9 @@ Create monitor options:
 
 The last non-option argument to this command is a list of key=value parameters given as the monitor parameters. The `--servers` option must be used after any `<params...>` only. 
 
-The list of servers given with the `--servers` option should not contain any servers that are already monitored by another monitor. The last argument to this command is a list of `key=value` parameters given as the monitor parameters.   
+The list of servers given with the `--servers` option should not contain any servers that are already monitored by another monitor. The last argument to this command is a list of `key=value` parameters given as the monitor parameters.
+
+Servers can also be specified usint the `servers=name,name,...` parameter which should probably be prefered over the `--servers` option.
 
 The redundant options `--monitor-user` and `--monitor-password` have been deprecated as of MaxScale 22.08.
 
